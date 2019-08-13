@@ -21,8 +21,9 @@ public struct Location: Hashable {
         self.init(row: indexPath.row, column: indexPath.column)
     }
 
-    public var hashValue: Int {
-        return 32768 * row + column
+    public func hash(into hasher: inout Hasher) {
+        row.hash(into: &hasher)
+        column.hash(into: &hasher)
     }
 
     public static func ==(lhs: Location, rhs: Location) -> Bool {
